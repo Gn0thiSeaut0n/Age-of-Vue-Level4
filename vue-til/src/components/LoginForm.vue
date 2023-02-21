@@ -10,7 +10,11 @@
           <label for="username">pw: </label>
           <input id="password" type="password" v-model="password" />
         </div>
-        <button :disabled="!isUsernameValid || !password" type="submit" class="btn">
+        <button
+          :disabled="!isUsernameValid || !password"
+          type="submit"
+          class="btn"
+        >
           로그인
         </button>
         <p>{{ logMessage }}</p>
