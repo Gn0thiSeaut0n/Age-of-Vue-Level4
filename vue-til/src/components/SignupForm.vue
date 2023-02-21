@@ -1,5 +1,7 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <form @submit.prevent="submitForm" class="form">
     <div>
       <label for="username">id: </label>
       <input id="username" type="text" v-model="username" />
@@ -14,15 +16,17 @@
     </div>
     <button
       :disabled="!isUsernameValid || !password || !nickname"
-      type="submit"
+      type="submit" class="btn"
     >
       회원 가입
     </button>
     <p>{{ logMessage }}</p>
   </form>
+    </div>
+  </div>
 </template>
 <script>
-import { registerUser } from '@/api/index';
+import { registerUser } from '@/api/auth';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -66,4 +70,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.btn {
+  color: white;
+}
+</style>

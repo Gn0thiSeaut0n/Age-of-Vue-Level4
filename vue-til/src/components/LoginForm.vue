@@ -1,21 +1,24 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="username" />
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <form @submit.prevent="submitForm" class="form">
+        <div>
+          <label for="username">id: </label>
+          <input id="username" type="text" v-model="username" />
+        </div>
+        <div>
+          <label for="username">pw: </label>
+          <input id="password" type="password" v-model="password" />
+        </div>
+        <button :disabled="!isUsernameValid || !password" type="submit" class="btn">
+          로그인
+        </button>
+        <p>{{ logMessage }}</p>
+      </form>
     </div>
-    <div>
-      <label for="username">pw: </label>
-      <input id="password" type="password" v-model="password" />
-    </div>
-    <button :disabled="!isUsernameValid || !password" type="submit">
-      로그인
-    </button>
-    <p>{{ logMessage }}</p>
-  </form>
+  </div>
 </template>
 <script>
-import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -38,9 +41,7 @@ export default {
           username: this.username,
           password: this.password,
         };
-        const { data } = await loginUser(userData);
-        this.$store.commit('setToken', data.token);
-        this.$store.commit('setUsername', data.user.username);
+        await this.$store.dispatch('LOGIN', userData);
         this.$router.push('/main');
       } catch (error) {
         this.logMessage = error.response.data;
@@ -55,3 +56,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.btn {
+  color: white;
+}
+</style>
