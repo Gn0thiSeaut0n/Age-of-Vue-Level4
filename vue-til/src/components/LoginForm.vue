@@ -5,6 +5,11 @@
         <div>
           <label for="username">id: </label>
           <input id="username" type="text" v-model="username" />
+          <p class="validation-text">
+            <span class="warning" v-if="!isUsernameValid && username">
+              Please enter an email address
+            </span>
+          </p>
         </div>
         <div>
           <label for="username">pw: </label>
@@ -14,6 +19,7 @@
           :disabled="!isUsernameValid || !password"
           type="submit"
           class="btn"
+          :class="!isUsernameValid || !password ? 'disabled' : null"
         >
           로그인
         </button>
@@ -28,8 +34,10 @@ import { validateEmail } from '@/utils/validation';
 export default {
   data() {
     return {
+      // form values
       username: '',
       password: '',
+      // log
       logMessage: '',
     };
   },
