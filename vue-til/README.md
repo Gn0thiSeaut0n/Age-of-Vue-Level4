@@ -1,7 +1,7 @@
 # Vue.js 학습
 
 [인프런](https://www.inflearn.com/course/vue-js-%EB%81%9D%EB%82%B4%EA%B8%B0-%EC%BA%A1%ED%8B%B4%ED%8C%90%EA%B5%90) 캡틴판교님의 Vue.js Endgame 강의에서 다루는 애플리케이션
-[소스 코드](https://github.com/joshua1988)
+[소스 코드](https://github.com/joshua1988)를 실습 및 수정
 
 
 ## 기술 스택
